@@ -8,12 +8,14 @@ func show_message(text):
     $MessageTimer.start()
 
 func show_game_over():
+    $Leaderboard.add_score(int($ScoreLabel.text))
+
     show_message("Game Over")
 
     yield($MessageTimer, "timeout")
 
     $Message.text = "Dodge the\nCreeps!"
-    $Message.show()
+    $Leaderboard.show()
     $LeaderboardTimer.start()
 
     yield(get_tree().create_timer(1), "timeout")

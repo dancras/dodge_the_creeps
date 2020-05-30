@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
+[ext_resource path="res://Leaderboard.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -77,6 +78,7 @@ margin_top = -60.5
 margin_bottom = 60.5
 grow_vertical = 2
 alignment = 1
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -88,13 +90,13 @@ custom_fonts/font = SubResource( 1 )
 text = "Hall of fame"
 align = 1
 
-[node name="LeaderBoardRow1" type="HBoxContainer" parent="Leaderboard"]
+[node name="LeaderboardRow" type="HBoxContainer" parent="Leaderboard"]
 margin_top = 82.0
 margin_right = 480.0
 margin_bottom = 121.0
 alignment = 1
 
-[node name="Name" type="Label" parent="Leaderboard/LeaderBoardRow1"]
+[node name="Name" type="Label" parent="Leaderboard/LeaderboardRow"]
 margin_right = 333.0
 margin_bottom = 39.0
 size_flags_horizontal = 3
@@ -106,7 +108,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="Leaderboard/LeaderBoardRow1"]
+[node name="Score" type="Label" parent="Leaderboard/LeaderboardRow"]
 margin_left = 337.0
 margin_right = 480.0
 margin_bottom = 39.0
@@ -114,62 +116,6 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 custom_fonts/font = SubResource( 4 )
 text = "101"
-align = 1
-
-[node name="LeaderBoardRow2" type="HBoxContainer" parent="Leaderboard"]
-margin_top = 125.0
-margin_right = 480.0
-margin_bottom = 164.0
-alignment = 1
-
-[node name="Name" type="Label" parent="Leaderboard/LeaderBoardRow2"]
-margin_right = 333.0
-margin_bottom = 39.0
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.7
-custom_fonts/font = SubResource( 4 )
-text = "SkyrimGrandma"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Score" type="Label" parent="Leaderboard/LeaderBoardRow2"]
-margin_left = 337.0
-margin_right = 480.0
-margin_bottom = 39.0
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
-custom_fonts/font = SubResource( 4 )
-text = "82"
-align = 1
-
-[node name="LeaderBoardRow3" type="HBoxContainer" parent="Leaderboard"]
-margin_top = 168.0
-margin_right = 480.0
-margin_bottom = 207.0
-alignment = 1
-
-[node name="Name" type="Label" parent="Leaderboard/LeaderBoardRow3"]
-margin_right = 333.0
-margin_bottom = 39.0
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.7
-custom_fonts/font = SubResource( 4 )
-text = "Boomer1964"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Score" type="Label" parent="Leaderboard/LeaderBoardRow3"]
-margin_left = 337.0
-margin_right = 480.0
-margin_bottom = 39.0
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
-custom_fonts/font = SubResource( 4 )
-text = "64"
 align = 1
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
