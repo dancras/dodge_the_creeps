@@ -36,6 +36,8 @@ func _on_MobTimer_timeout():
 
     # Create a Mob instance and add it to the scene.
     var mob = Mob.instance()
+    var mob_sprite = mob.get_node("AnimatedSprite")
+    var mob_collision = mob.get_node("CollisionShape2D")
 
     add_child(mob)
 
@@ -43,7 +45,7 @@ func _on_MobTimer_timeout():
     mob.position = $MobPath/MobSpawnLocation.position
 
     if (randi() % 10 == 0):
-        mob.get_node("AnimatedSprite").modulate = Color(1, 0, 0)
+        mob_sprite.modulate = Color(1, 0, 0)
 
         mob.rotation = mob.get_angle_to($Player.position)
 
@@ -56,7 +58,13 @@ func _on_MobTimer_timeout():
         direction += rand_range(-PI / 4, PI / 4)
         mob.rotation = direction
 
-        mob.linear_velocity = Vector2(rand_range(mob.min_speed, mob.max_speed), 0)
+        if (randi() % 20 == 0):
+            mob_sprite.modulate = Color(0, 1, 0)
+            mob_sprite.scale = mob_sprite.scale * 2
+            mob_collision.scale = mob_collision.scale * 2
+            mob.linear_velocity = Vector2(mob.giant_speed, 0)
+        else:
+            mob.linear_velocity = Vector2(rand_range(mob.min_speed, mob.max_speed), 0)
 
     mob.linear_velocity = mob.linear_velocity.rotated(mob.rotation)
 
